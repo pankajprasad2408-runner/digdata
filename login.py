@@ -83,7 +83,9 @@ class LoginWindow(tk.Tk):
             self.clear_fields()
             self.destroy()
             from dashboard import DashboardWindow
-            DashboardWindow(username=username)
+            dashboard = DashboardWindow(username=username)
+            dashboard.protocol("WM_DELETE_WINDOW", dashboard.destroy)
+            dashboard.mainloop()
         else:
             messagebox.showerror("Error", "Invalid username or password")
         return "break"
